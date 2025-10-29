@@ -15,7 +15,7 @@ const Login = () => {
 
     return (
         <div className='flex h-screen w-screen items-center justify-center'>
-            <div className='border-none shadow-2xl shadow-gray-950 rounded-2xl bg-[#0B2B40] border-black p-20'>
+            <div className='border-none shadow-2xl shadow-gray-950 rounded-2xl bg-gray-800 border-black p-20'>
                 <form
                     onSubmit=
                     {
@@ -42,7 +42,7 @@ const Login = () => {
                             }
                         }
                         required className='outline-none border-none bg-gray-700 shadow-sm shadow-black text-xl py-3 px-5 font-medium text-white rounded-full placeholder:text-gray-400 mt-4 focus:bg-gray-600' type="password" placeholder='Enter your password' />
-                    <button className='mt-5 outline-none border-none hover:bg-red-600 font-semibold bg-red-500 text-gray-900 text-xl py-2 px-8 w-full rounded-full placeholder:text-white'>Login</button>
+                    <button className='mt-5 outline-none border-none hover:bg-red-600 font-semibold bg-red-500 text-gray-900 text-xl  py-2 px-8 w-full rounded-full placeholder:text-white'>Login</button>
                 </form>
             </div>
         </div>
