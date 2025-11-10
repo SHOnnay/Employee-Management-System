@@ -8,16 +8,32 @@ import { AuthContext } from './context/AuthProvider'
 export default function App() {
 
   const [user, setUser] = useState(null)
+  const [logedInUserData, setLogedInUserData] = useState(null)
+  const authData = useContext(AuthContext);
 
-  const hadnleLogin = (email, password) => {
+  // useEffect(() => {
+  //   if(authData){
+  //     const longgedInUser =localStorage.getItem("loggedInUser")
+  //     if(longgedInUser){
+  //       setUser(longgedInUser.role)
+  //     } 
+  //   }
+
+  // }, [authData]);
+
+
+  const handleLogin = (email, password) => {
     if (email == 'admin@example.com' && password == '1234') {
       setUser('admin');
-      console.log(user);
-
+      localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin' }))
     }
-    else if (email == 'user@me.com' && password == '1234') {
-      setUser('employee');
-      console.log(user);
+    else if (authData) {
+      const employee = authData.employees.find((e) => email == e.email && e.password == password)
+      if (employee) {
+        setUser('employee');
+        setLogedInUserData(employee);
+        localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee' }));
+      }
 
     }
     else {
@@ -26,15 +42,18 @@ export default function App() {
 
   }
 
-  const data = useContext(AuthContext);
-  console.log(data);
-  
+
+  // return (
+  //   <>
+
+  //     {!user ? <Login hadnleLogin={handleLogin}></Login> : ''}
+  //     {user == 'admin' ? <AdminDashboard></AdminDashboard> : (user=='employee'?<EmployeeDashboard data={logedInUserData}></EmployeeDashboard> : null)}
+  //   </>
+  // )
 
   return (
     <>
-
-      {!user ? <Login hadnleLogin={hadnleLogin}></Login> : ''}
-      {user == 'admin' ? <AdminDashboard></AdminDashboard> : <EmployeeDashboard></EmployeeDashboard>}
+      {!user  ? <Login hadnleLogin={handleLogin} />: user === 'admin' ? <AdminDashboard /> : user === 'employee' ? <EmployeeDashboard data={logedInUserData} /> : null }
     </>
   )
 }

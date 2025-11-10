@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TaskList = () => {
+const TaskList = ({data}) => {
     return (
         <div id='tasklist' className='py-5 h-[55%] overflow-x-auto flex items-center justify-start gap-5 flex-nowrap w-full mt-10'>
             <div className='shrink-0 h-full w-[300px] bg-red-400 rounded-xl p-5'>
