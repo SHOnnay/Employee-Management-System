@@ -11,15 +11,16 @@ export default function App() {
   const [logedInUserData, setLogedInUserData] = useState(null)
   const authData = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   if(authData){
-  //     const longgedInUser =localStorage.getItem("loggedInUser")
-  //     if(longgedInUser){
-  //       setUser(longgedInUser.role)
-  //     } 
-  //   }
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
 
-  // }, [authData]);
+    if (loggedInUser) {
+      const userData = JSON.parse(loggedInUser)
+      setUser(userData.role)
+      setLogedInUserData(userData.data)
+    }
+
+  }, [])
 
 
   const handleLogin = (email, password) => {
@@ -32,7 +33,7 @@ export default function App() {
       if (employee) {
         setUser('employee');
         setLogedInUserData(employee);
-        localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee' }));
+        localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee', data: employee }));
       }
 
     }
@@ -43,17 +44,9 @@ export default function App() {
   }
 
 
-  // return (
-  //   <>
-
-  //     {!user ? <Login hadnleLogin={handleLogin}></Login> : ''}
-  //     {user == 'admin' ? <AdminDashboard></AdminDashboard> : (user=='employee'?<EmployeeDashboard data={logedInUserData}></EmployeeDashboard> : null)}
-  //   </>
-  // )
-
   return (
     <>
-      {!user  ? <Login hadnleLogin={handleLogin} />: user === 'admin' ? <AdminDashboard /> : user === 'employee' ? <EmployeeDashboard data={logedInUserData} /> : null }
+      {!user ? <Login hadnleLogin={handleLogin} /> : user === 'admin' ? <AdminDashboard /> : user === 'employee' ? <EmployeeDashboard data={logedInUserData} /> : null}
     </>
   )
 }

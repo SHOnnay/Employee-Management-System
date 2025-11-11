@@ -8,7 +8,7 @@ const AllTask = () => {
                 <h3>Make UI design</h3>
                 <h5>Status</h5>
             </div>
-            
+
             <div className='bg-green-500 mb-2 py-2 px-4 flex justify-between rounded'>
                 <h2>Onnay</h2>
                 <h3>Make UI design</h3>
