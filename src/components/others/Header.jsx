@@ -1,13 +1,13 @@
 import React from 'react';
-import { setLocaLStorage } from '../../utils/localStorage';
 
-const Header = ({ data, onLogout }) => {
-    const username = data?.firstname || 'Admin';
+const Header = (props) => {
+    const username = props?.data?.firstname || 'Admin';
 
     const logOutuser = () => {
-        localStorage.setItem('loggedInUser', '')
-        window.location.reload()
-    }
+        localStorage.setItem('loggedInUser', '');
+        props.changeUser('');
+        // window.location.reload();
+    };
 
     return (
         <div className='flex items-center justify-between'>

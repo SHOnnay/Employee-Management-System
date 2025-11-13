@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Login = ({hadnleLogin}) => {
+const Login = ({ hadnleLogin }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -42,7 +42,7 @@ const Login = ({hadnleLogin}) => {
                             }
                         }
                         required className='outline-none border-none bg-gray-700 shadow-sm shadow-black text-xl py-3 px-5 font-medium text-white rounded-full placeholder:text-gray-400 mt-4 focus:bg-gray-600' type="password" placeholder='Enter your password' />
-                    <button className='mt-5 outline-none border-none hover:bg-red-600 font-semibold bg-red-500 text-gray-900 text-xl  py-2 px-8 w-full rounded-full placeholder:text-white'>Login</button>
+                    <button className='mt-5 outline-none border-none hover:bg-red-600 duration-200 ease-in-out font-semibold bg-red-500 text-gray-900 text-xl  py-2 px-8 w-full rounded-full placeholder:text-white'>Login</button>
                 </form>
             </div>
         </div>

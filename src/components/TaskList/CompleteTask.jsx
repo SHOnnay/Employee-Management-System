@@ -1,18 +1,18 @@
 import React from 'react';
 
-const CompleteTask = () => {
+const CompleteTask = ({data}) => {
     return (
         <div>
             <div className='shrink-0 h-full w-[300px] bg-purple-400 rounded-xl p-5'>
                 <div className='flex justify-between items-center'>
-                    <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High
+                    <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>{data.category}
                     </h3>
-                    <h4 className='text-sm'>20 feb 2024</h4>
+                    <h4 className='text-sm'>{data.date}</h4>
                 </div>
-                <h2 className='mt-5 text-2xl font-xl'>Make a yutube video</h2>
-                <p className='text-sm mt-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat itaque nihil nobis quos molestiae enim!</p>
-                <div className='mt-2'>
-                    <button className='w-full'>Completed</button>
+                <h2 className='mt-5 text-2xl font-xl'>{data.title}</h2>
+                <p className='text-sm mt-2'>{data.description}</p>
+                <div className='mt-4'>
+                    <button className='w-full bg-purple-600 rounded-xl py-1 font-semibold'>Completed</button>
                 </div>
             </div>
         </div>
